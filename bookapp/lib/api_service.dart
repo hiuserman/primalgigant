@@ -19,20 +19,20 @@ class Book{
     this.publisher,
   });
 
-  factory Book.fromJson(Map<String, dynamic> json) {
-    return Book(
-      title: json['title'],
-      author: List<String>.from(json['authors']?.map((x) => x['name']) ?? []),
-      description: json['description'],
-      imageUrl: json['cover']?['medium'],
-      publishedDate: json['publish_date'],
-      publisher: json['publishers']?.isNotEmpty ? json['publishers'][0]['name'] : null,
-    );
-  }
+factory Book.fromJson(Map<String, dynamic> json) {
+  return Book(
+    title: json['title'],
+    author: json['authors'] != null ? List<String>.from(json['authors']) : null,
+    description: json['description'],
+    imageUrl: json['thumbnail']?.replaceFirst('http://', 'https://'),
+    publishedDate: json['publishedDate'],
+    publisher: json['publisher'],
+  );
+}
 }
 
 Future<Book?> fetchBook(String isbn) async {
-  final url = Uri.parse('http://127.0.1:8000/decode?isbn=$isbn/');
+  final url = Uri.parse('http://127.0.0.1:8000/api/decode?isbn=$isbn');
 
   final response = await http.get(url);
 
