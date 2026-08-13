@@ -1,16 +1,16 @@
-# bookapp
+# ISBN Book Finder — Flutter client
 
-A new Flutter project.
+ISBNを入力し、FastAPIバックエンドから取得した書籍情報を表示するFlutterクライアントです。
 
-## Getting Started
+## 起動
 
-This project is a starting point for a Flutter application.
+```bash
+flutter pub get
+flutter run
+```
 
-A few resources to get you started if this is your first Flutter project:
+バックエンドを先に`uvicorn app.main:app --reload`で起動してください。
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+APIの接続先は`lib/api_service.dart`にあります。実機・エミュレーターで動かす場合は、`127.0.0.1`をバックエンドへ到達できるアドレスへ変更する必要があります。
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+プロジェクト全体の説明はルートの`README.md`を参照してください。
